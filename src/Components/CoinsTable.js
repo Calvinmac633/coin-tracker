@@ -6,7 +6,7 @@ import {useNavigate} from "react-router-dom";
 const CoinsTable = () => {
     const [coins, setCoins] = useState([]);
     const [loading, setLoading] = useState(true);
-    const [search, setSearch] = useState("")
+    // const [search, setSearch] = useState("")
 
     const fetchCoins = async () => {
         setLoading(true)
@@ -55,7 +55,7 @@ const CoinsTable = () => {
                             </thead>
                             <tbody>
                             {coins.map((row) => {
-                                const profit = row.price_change_percentage_24h > 0;
+                                // const profit = row.price_change_percentage_24h > 0;
                                 return (
                                     <tr
                                         onClick={() => navigate(`/coin/${row.id}`)}

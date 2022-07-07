@@ -5,7 +5,7 @@ class Header extends Component {
     render() {
         return (
             <div>
-                <Link style={{ textDecoration: 'none', color: 'black' }} to='/'>
+                <Link style={{ textDecoration: 'none', color: 'black', textAlign: 'center' }} to='/'>
                     <h3>
                     tokenPort
                     </h3>

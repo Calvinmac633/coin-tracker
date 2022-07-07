@@ -11,6 +11,9 @@ import Coinpage from "./Pages/Coinpage";
 // heroku + firebase
 //https://medium.com/swlh/walkthrough-deploying-an-app-with-heroku-and-firebase-bonus-connecting-a-custom-domain-adb9f4f37e06
 
+//to push
+//git push -u origin main
+
 class App extends Component {
   render() {
     return (

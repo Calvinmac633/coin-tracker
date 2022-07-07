@@ -1,3 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Cutive+Mono&display=swap');
+
+body {
+    background-color: #315b8e;
+    /* background-color: #345379; */
+    color: rgb(235, 232, 232);
+    font-family: 'Cutive Mono', monospace;
+    margin: 0;
+    padding: 0
+}
+
+tbody tr:nth-child(odd) {
+    /* background-color: rgb(61, 106, 160); */
+    border-bottom: 'black solid 1px';
+  }
+tr:hover{
+    background: #213c5e;
+}
+
+
+
+
 /*.App {*/
 /*  text-align: center;*/
 /*}*/

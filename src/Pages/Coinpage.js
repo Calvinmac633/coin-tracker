@@ -50,7 +50,7 @@ const Coinpage = () => {
     return (
         <div>
                 <Container padding='0' maxWidth="sm">
-                <Box sx={{ backgroundColor: '#ffffff', maxWidth: '100vh' }}>
+                <Box sx={{ backgroundColor: 'transparent', maxWidth: '100vh' }}>
                     <h1 style={{textAlign:'center'}}>{coin.name}</h1>
                     <div style={{display: 'flex', verticalAlign: 'center'}}>
                         <span>

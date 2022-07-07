@@ -104,7 +104,7 @@ const CoinsTable = () => {
                                     className={classes.tableCell}
                                         key={head}
                                         align={head === "Coin" ? "center" : "center"}
-                                        style={{maxWidth: '25%', color: 'whitesmoke', fontFamily: 'Cutive Mono'}}
+                                        style={{maxWidth: '25%', color: 'whitesmoke', fontFamily: 'Cutive Mono', fontWeight: 500, fontSize: '.9rem'}}
                                     >
                                         {head}
                                     </TableCell>
@@ -122,7 +122,7 @@ const CoinsTable = () => {
                                         style={{height: '3rem', marginTop: '5rem !important'}}
                                     >
                                         <TableCell
-                                        className={classes.tableCell} align='center' style={{padding: '.25rem 0 .1rem 0'}} width='50px'>
+                                        className={classes.tableCell} align='center' style={{fontFamily: 'cutive mono', fontWeight: 500, color: 'whitesmoke', padding: '.25rem 0 .1rem 0'}} width='50px'>
                                             <img src={row.image} width="30%" height="20%" />
                                             {row.symbol.length > 5 ? (
                                                 <div style={{fontSize: '.75rem'}}>
@@ -135,7 +135,7 @@ const CoinsTable = () => {
                                             )}
                                         </TableCell>
                                         <TableCell
-                                        className={classes.tableCell} align='center' style={{color: 'whitesmoke', fontFamily: 'Cutive Mono', padding: '.5rem'}}>
+                                        className={classes.tableCell} align='center' style={{color: 'whitesmoke', fontFamily: 'Cutive Mono', fontWeight: 500, padding: '.5rem'}}>
                                             {row.current_price > 999.99 ? (
                                                '$' + numberWithCommas(row.current_price.toFixed(0))
                                             ) : (
@@ -145,12 +145,12 @@ const CoinsTable = () => {
                                         <TableCell
                                             className={classes.tableCell} 
                                             align='center' 
-                                            style={{color: profit > 0 ? 'rgb(14, 203, 129' : 'red', fontFamily: 'Cutive Mono', padding: '.5rem'}}
+                                            style={{color: profit > 0 ? 'rgb(14, 203, 129' : 'red', fontFamily: 'Cutive Mono', fontWeight: 500, padding: '.5rem'}}
                                         >
                                             {profit && "+"}
                                             {row.price_change_percentage_24h.toFixed(2)}%</TableCell>
                                         <TableCell
-                                            style={{color: 'whitesmoke', fontFamily: 'Cutive Mono', padding: '.5rem'}} 
+                                            style={{color: 'whitesmoke', fontFamily: 'Cutive Mono', fontWeight: 500, padding: '.5rem'}} 
                                             className={classes.tableCell} 
                                             align='right'>${numberWithCommas(row.market_cap.toString().slice(0,-3))}
                                         </TableCell>

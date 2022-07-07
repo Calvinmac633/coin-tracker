@@ -54,6 +54,7 @@ const Coinpage = () => {
                     <h1 style={{textAlign:'center'}}>{coin.name}</h1>
                     <div style={{display: 'flex', verticalAlign: 'center'}}>
                         <span>
+                            {/* eslint-disable-next-line */}
                             <img src={coin.image.small}/>
                         </span>
                         <span style={{fontSize: '3rem'}}>

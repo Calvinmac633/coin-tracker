@@ -123,6 +123,7 @@ const CoinsTable = () => {
                                     >
                                         <TableCell
                                         className={classes.tableCell} align='center' style={{fontFamily: 'cutive mono', fontWeight: 500, color: 'whitesmoke', padding: '.25rem 0 .1rem 0'}} width='50px'>
+                                             {/* eslint-disable-next-line */}
                                             <img src={row.image} width="30%" height="20%" />
                                             {row.symbol.length > 5 ? (
                                                 <div style={{fontSize: '.75rem'}}>

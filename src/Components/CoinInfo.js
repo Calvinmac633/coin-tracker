@@ -83,34 +83,10 @@ const CoinInfo = ({ coin }) => {
     const currency = 'USD'
 
     const fetchHistoricalData = async () => {
-        // const { data } = await axios.get(HistoricalChart(coin.id, days, currency))
-        // console.log('data in fetch historical data: ', data)
-        // setflag(true);
-        // setHistoricData(data.prices);
-
-        // getHistoryData(coin, 30, 'USD')
         console.log('days????: ', days)
         const { data } = await axios.get(HistoricalChart(coin.id, days, 'USD'));
         console.log('dataa: ', data)
         setHistoricData(data.prices);
-        // fetch(`/historical-chart/${coin.id}/${days}/${'USD'}`, {
-        //     method: 'GET',
-        //     headers: {
-        //         'Accept': 'application/json',
-        //         'Content-Type': 'application/json'
-        //     },
-        //     params: JSON.stringify({
-        //         id: coin.id,
-        //         currency: 'USD',
-        //         days: 30
-        //     })
-        // }).then((response) => {
-        //     console.log('fetchHistoricalData: response ', response)
-        //     return response.json()
-        // }).then((data) => {
-        //     console.log('fetchHistoricalData data!!: ', data)
-        //     setHistoricData(data)
-        // })
     };
 
     useEffect(() => {
@@ -127,14 +103,18 @@ const CoinInfo = ({ coin }) => {
             label: "30 Days",
             value: 30,
         },
-        {
-            label: "3 Months",
-            value: 90,
-        },
+        // {
+        //     label: "3 Months",
+        //     value: 90,
+        // },
         {
             label: "1 Year",
             value: 365,
         },
+        {
+            label: '5 Years',
+            value: (365*5)
+        }
     ];
 
 

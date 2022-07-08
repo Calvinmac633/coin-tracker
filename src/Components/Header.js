@@ -8,10 +8,7 @@ class Header extends Component {
         return (
             <div style={{display: 'flex', justifyContent: 'center', paddingTop: '.5rem'}}>
                 <Link style={{ textDecoration: 'none', color: 'black', textAlign: 'center' }} to='/'>
-                    {/* <h3>
-                    tokenPort
-                    </h3> */}
-                    <HomeIcon/>
+                    <HomeIcon sx={{ color: 'white' }}/>
                 </Link>
             </div>
         );

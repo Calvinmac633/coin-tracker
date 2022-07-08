@@ -8,21 +8,13 @@ import {makeStyles} from "@material-ui/core";
 import CoinInfo from '../Components/CoinInfo';
 
 const useStyles = makeStyles({
-    leftColumnCell: {
+    columnCell: {
         display: 'flex 1 1 auto',
         flexDirection: 'row',
-        borderBottom: 'solid 1px white',
-        // borderTop: 'solid 1px white',
+        borderBottom: 'solid 1px rgb(255,255,255,.3)',
         padding: '.25rem',
         width: '50%'
     },
-    rightColumnCell: {
-        borderBottom: 'solid 1px white',
-        // borderTop: 'solid 1px white',
-        padding: '.25rem',
-        borderLeft: 'solid 1px white',
-        width: '50%'
-    }
 })
 
 const Coinpage = () => {
@@ -31,7 +23,6 @@ const Coinpage = () => {
     const [coin, setCoin] = useState();
     const classes = useStyles()
 
-    // const { currency, symbol } = CryptoState();
     const fetchCoin = async () => {
         const { data } = await axios.get(SingleCoin(id));
         console.log('dataa: ', data)
@@ -44,8 +35,6 @@ const Coinpage = () => {
     }, []);
 
     if (!coin) return <div>Loading...</div>;
-
-    console.log('--- COIN --- ', coin)
 
     return (
         <div>
@@ -60,20 +49,46 @@ const Coinpage = () => {
                         <span style={{fontSize: '3rem'}}>
                             ${coin.market_data.current_price.usd.toLocaleString()}
                         </span>
-
                     </div>
                     <table style={{borderTop: 'solid 1px white'}}>
                         <tbody>
                         <tr>
-                            <td className={classes.leftColumnCell}>
-                                <span>market cap:</span>
-                                <span> ${(coin.market_data.market_cap.usd) ? coin.market_data.market_cap.usd.toLocaleString() : coin.market_data.market_cap.usd}</span>
+                            <td className={classes.columnCell}>
+                                <span>market cap: <b>${(coin.market_data.market_cap.usd) ? coin.market_data.market_cap.usd.toLocaleString() : coin.market_data.market_cap.usd}</b></span>
                             </td>
-                            <td className={classes.rightColumnCell}>circ. supply: {coin.market_data.circulating_supply ? coin.market_data.circulating_supply.toLocaleString() : coin.market_data.circulating_supply}</td>
                         </tr>
                         <tr>
-                            <td className={classes.leftColumnCell}>full dilu. value: ${coin.market_data.fully_diluted_valuation.usd ? coin.market_data.fully_diluted_valuation.usd.toLocaleString() : coin.market_data.fully_diluted_valuation.usd}</td>
-                            <td className={classes.rightColumnCell}>total supply: {coin.market_data.total_supply ? coin.market_data.total_supply.toLocaleString() : coin.market_data.total_supply}</td>
+                            <td className={classes.columnCell}>circ. supply: <b>{coin.market_data.circulating_supply ? coin.market_data.circulating_supply.toLocaleString() : coin.market_data.circulating_supply}</b></td>
+                        </tr>
+                        <tr>
+                            <td className={classes.columnCell}>total supply: <b>{coin.market_data.total_supply ? coin.market_data.total_supply.toLocaleString() : coin.market_data.total_supply}</b></td>
+                        </tr>
+                        {coin.market_data.fully_diluted_valuation.usd ? (
+                            <tr>
+                                <td className={classes.columnCell}>full dilu. value: <b>${coin.market_data.fully_diluted_valuation.usd ? coin.market_data.fully_diluted_valuation.usd.toLocaleString() : coin.market_data.fully_diluted_valuation.usd}</b></td>
+                            </tr>
+                        ) : (
+                            <></>
+                        )}
+                        <tr>
+                            <td className={classes.columnCell}>
+                                <span>24hr high: <b>${coin.market_data.high_24h.usd.toLocaleString()}</b></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td className={classes.columnCell}>
+                                <span>24hr low: <b>${coin.market_data.low_24h.usd.toLocaleString()}</b> </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td className={classes.columnCell}>
+                                <span>all-time high: <b>${coin.market_data.ath.usd.toLocaleString()}</b></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td className={classes.columnCell}>
+                                <span>all-time low: <b>${coin.market_data.atl.usd.toLocaleString()}</b> </span>
+                            </td>
                         </tr>
                         </tbody>
                     </table>

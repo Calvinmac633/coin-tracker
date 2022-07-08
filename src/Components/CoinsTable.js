@@ -21,10 +21,11 @@ export function numberWithCommas(x) {
   const useStyles = makeStyles({
     tableCell: {
         padding: 0,
-        border: 'none',
+        // border: 'none'
+        borderBottom: '.5px solid rgb(255,255,255,.2) !important',
+        fontSize: '.95rem !important'
     },
     tablePaper: {
-        color: 'white !important',
         // backgroundColor: '#4e91e2 !important', //lighter
         backgroundColor: 'transparent !important', //lighter
         // maxWidth: '6vw',
@@ -80,13 +81,13 @@ const CoinsTable = () => {
                                 className={classes.input}
                                 style={{
                                     color: 'white',
+                                    height: '3em',
                                     width: '100%',
                                     border:' 1px solid grey',
                                     borderRadius: '8px',
                                     fontSize: '0.875rem',
                                     fontFamily: 'Cutive Mono',
                                     fontWeight: '400',
-                                    lineHeight: '.5',
                                     padding: '0px 12px 0px 12px',
                                     marginBottom: '12px'
                                 }}
@@ -104,7 +105,7 @@ const CoinsTable = () => {
                                     className={classes.tableCell}
                                         key={head}
                                         align={head === "Coin" ? "center" : "center"}
-                                        style={{maxWidth: '25%', color: 'whitesmoke', fontFamily: 'Cutive Mono', fontWeight: 500, fontSize: '.9rem'}}
+                                        style={{maxWidth: '25%', color: 'whitesmoke', fontFamily: 'Cutive Mono', fontWeight: 500}}
                                     >
                                         {head}
                                     </TableCell>
@@ -122,7 +123,7 @@ const CoinsTable = () => {
                                         style={{height: '3rem', marginTop: '5rem !important'}}
                                     >
                                         <TableCell
-                                        className={classes.tableCell} align='center' style={{fontFamily: 'cutive mono', fontWeight: 500, color: 'whitesmoke', padding: '.25rem 0 .1rem 0'}} width='50px'>
+                                        className={classes.tableCell} align='center' style={{ fontFamily: 'cutive mono', fontWeight: 500, color: 'whitesmoke', padding: '.25rem 0 .1rem 0'}} width='50px'>
                                              {/* eslint-disable-next-line */}
                                             <img src={row.image} width="30%" height="20%" />
                                             {row.symbol.length > 5 ? (

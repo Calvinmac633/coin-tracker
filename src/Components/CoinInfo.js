@@ -38,7 +38,10 @@ const useStyles = makeStyles((theme) => ({
             width: '100%',
             marginTop: 0,
             padding: 1,
-            paddingTop: 0
+            paddingTop: 0,
+            // height: '5rem'
+            height: '30rem',
+            margin: 'auto'
         }
     }
 }))
@@ -134,6 +137,7 @@ const CoinInfo = ({ coin }) => {
                     ) : (
                         <>
                             <Line
+                                height={300}
                                 data={{
                                     labels: historicData.map((coin) => {
                                         let date = new Date(coin[0]);
@@ -156,6 +160,7 @@ const CoinInfo = ({ coin }) => {
                                 }}
 
                                 options={{
+                                    maintainAspectRatio: true,
                                     scales: {
                                         x: {
                                             ticks: {
@@ -189,7 +194,7 @@ const CoinInfo = ({ coin }) => {
                             }}/>
                             <div style={{
                                 display: 'flex',
-                                marginTop: 20,
+                                marginTop: 10,
                                 justifyContent: 'space-around',
                                 width: '100%'
                             }}>

@@ -100,7 +100,7 @@ const CoinsTable = () => {
                         <Table style={{textIndent: 'none', borderSpacing: 0}}>
                             <TableHead>
                             <TableRow>
-                                {["Coin", "Price", "24h-Chg", "M Cap (M)"].map((head) => (
+                                {["Coin", "Price", "24hr Change", "M Cap (M)"].map((head) => (
                                     <TableCell
                                     className={classes.tableCell}
                                         key={head}
@@ -147,7 +147,7 @@ const CoinsTable = () => {
                                         <TableCell
                                             className={classes.tableCell} 
                                             align='center' 
-                                            style={{color: profit > 0 ? 'rgb(14, 203, 129' : 'red', fontFamily: 'Cutive Mono', fontWeight: 500, padding: '.5rem'}}
+                                            style={{color: profit > 0 ? 'rgb(14, 203, 129' : '#FF5733', fontFamily: 'Cutive Mono', fontWeight: 700, padding: '.5rem'}}
                                         >
                                             {profit && "+"}
                                             {row.price_change_percentage_24h.toFixed(2)}%</TableCell>

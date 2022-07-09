@@ -6,6 +6,7 @@ import Container from "@material-ui/core/Container";
 import Box from "@material-ui/core/Box";
 import {makeStyles} from "@material-ui/core";
 import CoinInfo from '../Components/CoinInfo';
+import ReactHtmlParser from 'react-html-parser'
 
 const useStyles = makeStyles({
     columnCell: {
@@ -36,11 +37,26 @@ const Coinpage = () => {
 
     if (!coin) return <div>Loading...</div>;
 
+    // const high_24h_percent = (((coin.market_data.high_24h.usd/coin.market_data.current_price.usd)-1)*100).toLocaleString();
+    // const low_24h_percent = (((coin.market_data.low_24h.usd/coin.market_data.current_price.usd)-1)*100).toLocaleString();
+    // const ath_percent = (((coin.market_data.ath.usd/coin.market_data.current_price.usd)-1)*100).toLocaleString();
+    // const atl_percent = (((coin.market_data.atl.usd/coin.market_data.current_price.usd)-1)*100).toLocaleString();
+
+    const high_24h_percent = (((coin.market_data.current_price.usd/coin.market_data.high_24h.usd)-1)*100)
+    const low_24h_percent = (((coin.market_data.current_price.usd/coin.market_data.low_24h.usd)-1)*100)
+    const ath_percent = (((coin.market_data.current_price.usd/coin.market_data.ath.usd)-1)*100)
+    const atl_percent = (((coin.market_data.current_price.usd/coin.market_data.atl.usd)-1)*100)
+
+    console.log('ath_percent: ', ath_percent)
+    console.log('atl_percent: ', atl_percent)
+
+    console.log(atl_percent > 0)
+
     return (
         <div>
                 <Container padding='0' maxWidth="sm">
                 <Box sx={{ backgroundColor: 'transparent', maxWidth: '100vh' }}>
-                    <h1 style={{textAlign:'center'}}>{coin.name}</h1>
+                    <h1 style={{textAlign:'center', margin: '10px 0px 10px 0px'}}>{coin.name}</h1>
                     <div style={{display: 'flex', verticalAlign: 'center'}}>
                         <span>
                             {/* eslint-disable-next-line */}
@@ -57,12 +73,21 @@ const Coinpage = () => {
                                 <span>market cap: <b>${(coin.market_data.market_cap.usd) ? coin.market_data.market_cap.usd.toLocaleString() : coin.market_data.market_cap.usd}</b></span>
                             </td>
                         </tr>
+
                         <tr>
                             <td className={classes.columnCell}>circ. supply: <b>{coin.market_data.circulating_supply ? coin.market_data.circulating_supply.toLocaleString() : coin.market_data.circulating_supply}</b></td>
                         </tr>
-                        <tr>
-                            <td className={classes.columnCell}>total supply: <b>{coin.market_data.total_supply ? coin.market_data.total_supply.toLocaleString() : coin.market_data.total_supply}</b></td>
+
+                        {(coin.market_data.total_supply === null) ? (
+                            <tr>
+                            <td className={classes.columnCell}>total supply: &infin;</td>
                         </tr>
+                        ) : (
+                             <tr>
+                             <td className={classes.columnCell}>total supply: <b>{coin.market_data.total_supply.toLocaleString()}</b></td>
+                             </tr>
+                        )}
+                      
                         {coin.market_data.fully_diluted_valuation.usd ? (
                             <tr>
                                 <td className={classes.columnCell}>full dilu. value: <b>${coin.market_data.fully_diluted_valuation.usd ? coin.market_data.fully_diluted_valuation.usd.toLocaleString() : coin.market_data.fully_diluted_valuation.usd}</b></td>
@@ -70,28 +95,43 @@ const Coinpage = () => {
                         ) : (
                             <></>
                         )}
+
                         <tr>
                             <td className={classes.columnCell}>
-                                <span>24hr high: <b>${coin.market_data.high_24h.usd.toLocaleString()}</b></span>
+                                <span>24hr high: <b>${coin.market_data.high_24h.usd.toLocaleString()}   </b></span>
+                                (<span style={{color: high_24h_percent > 0 ? 'rgb(14, 203, 129)' : '#FF5733'}}>{high_24h_percent.toLocaleString()}</span>)%
                             </td>
                         </tr>
+
                         <tr>
                             <td className={classes.columnCell}>
                                 <span>24hr low: <b>${coin.market_data.low_24h.usd.toLocaleString()}</b> </span>
+                                (<span style={{color: low_24h_percent > 0 ? 'rgb(14, 203, 129)' : '#FF5733'}}>{low_24h_percent.toLocaleString()}</span>)%
                             </td>
                         </tr>
+
                         <tr>
                             <td className={classes.columnCell}>
-                                <span>all-time high: <b>${coin.market_data.ath.usd.toLocaleString()}</b></span>
+                                <span>all-time high: <b>${coin.market_data.ath.usd.toLocaleString()}   </b></span>
+                                (<span style={{color: ath_percent > 0 ? 'rgb(14, 203, 129)' : '#FF5733'}}>{ath_percent.toLocaleString()}</span>)%
                             </td>
                         </tr>
+
                         <tr>
                             <td className={classes.columnCell}>
-                                <span>all-time low: <b>${coin.market_data.atl.usd.toLocaleString()}</b> </span>
+                                <span>all-time low: <b>${coin.market_data.atl.usd.toLocaleString()}   </b> </span>
+                                (<span style={{color: atl_percent > 0 ? 'rgb(14, 203, 129)' : '#FF5733'}}>{atl_percent.toLocaleString()}</span>)%
                             </td>
                         </tr>
                         </tbody>
                     </table>
+
+                    <div>
+                        <p style={{textAlign: 'justify'}}>
+                            {ReactHtmlParser(coin.description.en.split('. ')[0])}
+                        </p>
+                    </div>
+
                 </Box>
             </Container>
             <CoinInfo coin={coin} />

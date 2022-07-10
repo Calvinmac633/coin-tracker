@@ -40,7 +40,6 @@ const useStyles = makeStyles((theme) => ({
             padding: 1,
             paddingTop: 0,
             // height: '5rem'
-            height: '30rem',
             margin: 'auto'
         }
     }
@@ -137,7 +136,7 @@ const CoinInfo = ({ coin }) => {
                     ) : (
                         <>
                             <Line
-                                height={300}
+                                height={180}
                                 data={{
                                     labels: historicData.map((coin) => {
                                         let date = new Date(coin[0]);
@@ -208,6 +207,8 @@ const CoinInfo = ({ coin }) => {
                                     </SelectButton>
                                 ))}
                             </div>
+                            <br />
+                            <br />
                         </>
                     )
                 }
